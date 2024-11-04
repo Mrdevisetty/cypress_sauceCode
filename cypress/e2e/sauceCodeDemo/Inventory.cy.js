@@ -10,8 +10,6 @@ describe('sauce Demo UI actions', () => {
 
 
   it('Verify the page', () => {
-
-    cy.visit('www.saucedemo.com')
     cy.get('[data-test="username"]').type('standard_user')
     cy.get('[data-test="password"]').type('secret_sauce')
     cy.get('[data-test="login-button"]').click();
@@ -45,6 +43,12 @@ describe('sauce Demo UI actions', () => {
 
     //checkout button
     cy.get('[data-test="checkout"]').click()
+
+    //check all form fields are mandatory - click without entering form fields
+    cy.get('[data-test="continue"]').click()
+    cy.get('.form_group').find('svg').should('have.length',3)
+
+    //enter form fields
     cy.get('[data-test="firstName"]').type('Venkat')
     cy.get('[data-test="lastName"]').type('Devisetty')
     cy.get('[data-test="postalCode"]').type('NN27FZ')
@@ -55,10 +59,6 @@ describe('sauce Demo UI actions', () => {
 
     //Finish purchase
     cy.get('[data-test="finish"]').click();
-
-
-
-
 
   })
 

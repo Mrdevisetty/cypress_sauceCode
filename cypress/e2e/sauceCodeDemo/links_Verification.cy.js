@@ -10,7 +10,7 @@ describe('sauce Demo UI actions', () => {
   })
 
 
-  it.only('Verify the page', () => {
+  it('Verify the page', () => {
 
     cy.get('[data-test="username"]').type('standard_user')
     cy.get('[data-test="password"]').type('secret_sauce')
